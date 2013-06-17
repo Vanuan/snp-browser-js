@@ -1,0 +1,38 @@
+<!doctype html>
+<html ng-app="app">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular-resource.min.js"></script>
+    <script src="wiki-infobox-fetcher/wiki.js"></script>
+    <script src="wiki-infobox-fetcher/jsonp.js"></script>
+    <script src="mysnps.js"></script>
+    <script src="genotypes.js"></script>
+    <script src="knownsnps.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+    <div ng-controller="SnpViewer">
+      <h2>Known SNPs</h2>
+      <ul>
+        <li ng-repeat="snp in knownSnps">
+          <a href="#" ng-click="findSnps(snp.id)">{{snp.id}}</a>
+        </li>
+      </ul>
+
+      <form ng-submit="findSnps()">
+        <input type="text" ng-model="snpIds"  size="30"
+               placeholder="comma separated SNP ids">
+        <input class="btn-primary" type="submit" value="find">
+      </form>
+      
+      <div ng-repeat="snp in snps">
+        <h2>
+          <a href="http://www.snpedia.com/index.php/{{snp.id}}"
+           target="_blank">{{snp.id}}</a>
+        </h2>
+        <p>{{snp.description}}</p>
+        <p>{{snp.genotype}} &mdash; {{snp.genotypeDescription}}</p>
+      </div>
+    </div>
+  </body>
+</html>
