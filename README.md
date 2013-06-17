@@ -1,4 +1,6 @@
-# USAGE
+# snp-browser-js
+
+## Usage
 
 1. Install mongodb
 2. Import from your 23andme raw data to mongodb
